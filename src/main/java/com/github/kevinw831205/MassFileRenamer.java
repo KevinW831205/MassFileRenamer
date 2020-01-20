@@ -1,10 +1,12 @@
 package com.github.kevinw831205;
 
+import java.io.File;
+
 public class MassFileRenamer {
 
-    String directory;
-    String baseFileName;
-    String[] extensions;
+    private String directory;
+    private String baseFileName;
+    private String[] extensions;
 
     public MassFileRenamer(String directory, String baseFileName, String... extensions ) {
         this.directory = directory;
@@ -16,4 +18,20 @@ public class MassFileRenamer {
 
     }
 
+    public File DirectoryToFile(){
+        File file = new File(getDirectory());
+        return file;
+    }
+
+    public String getDirectory() {
+        return directory;
+    }
+
+    public String getBaseFileName() {
+        return baseFileName;
+    }
+
+    public String[] getExtensions() {
+        return extensions;
+    }
 }
