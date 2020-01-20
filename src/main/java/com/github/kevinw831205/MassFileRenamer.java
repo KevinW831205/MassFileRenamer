@@ -1,7 +1,8 @@
 package com.github.kevinw831205;
 
 import java.io.File;
-import java.nio.file.Files;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class MassFileRenamer {
 
@@ -16,7 +17,23 @@ public class MassFileRenamer {
     }
 
     public void renameFiles(){
-    };
+        File[] files = filesInDir();
+
+        String regex = "^"+baseFileName+"(\\d)";
+        Pattern pattern = Pattern.compile(regex);
+
+        for(File file : files){
+
+            Matcher matcher = pattern.matcher(file.getName());
+            while(matcher.find()){
+                System.out.println(matcher.group(1));
+            }
+
+
+//            File newFileName = new File(baseFileName);
+//            System.out.println(file.getName());
+        }
+    }
 
     public File[] filesInDir(){
         File dir = DirectoryToFile();
