@@ -15,9 +15,19 @@ public class RenameTest {
     }
 
     @Test
-    public void directoryToFileCheck() {
+    public void directoryToFileTest() {
         File actual =  renamer.DirectoryToFile();
-        System.out.println(actual.getAbsoluteFile());
+        String expectedDirectory = renamer.getDirectory();
         Assert.assertNotNull(actual);
+        Assert.assertEquals(expectedDirectory,actual.getAbsolutePath());
+    }
+
+    @Test
+    public void fileInDirTest(){
+        File[] files= renamer.filesInDir();
+        for(File file: files){
+            System.out.println(file);
+        }
+        Assert.assertEquals(5,files.length);
     }
 }

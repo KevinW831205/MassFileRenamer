@@ -1,6 +1,7 @@
 package com.github.kevinw831205;
 
 import java.io.File;
+import java.nio.file.Files;
 
 public class MassFileRenamer {
 
@@ -15,7 +16,11 @@ public class MassFileRenamer {
     }
 
     public void renameFiles(){
+    };
 
+    public File[] filesInDir(){
+        File dir = DirectoryToFile();
+        return dir.listFiles();
     }
 
     public File DirectoryToFile(){
