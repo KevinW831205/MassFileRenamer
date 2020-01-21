@@ -31,12 +31,12 @@ public class MassFileRenamer {
                 System.out.println(matcher.group(1));
                 System.out.println(matcher.group(2));
 
-//                File newFileName = new File(directory+"\\newbbFile"+matcher.group(1)+extensions[0]);
-//                if(file.renameTo(newFileName)){
-//                    System.out.println("success");
-//                } else {
-//                    System.out.println("fail");
-//                }
+                File newFileName = new File(directory+"\\newFile"+matcher.group(1)+extensions[0]);
+                if(file.renameTo(newFileName)){
+                    System.out.println("success");
+                } else {
+                    System.out.println("fail");
+                }
 
             }
 
