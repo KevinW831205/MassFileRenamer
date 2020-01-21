@@ -19,18 +19,28 @@ public class MassFileRenamer {
     public void renameFiles(){
         File[] files = filesInDir();
 
+        System.out.println(files.length);
         String regex = "^"+baseFileName+"(\\d)";
         Pattern pattern = Pattern.compile(regex);
 
         for(File file : files){
-
             Matcher matcher = pattern.matcher(file.getName());
-            while(matcher.find()){
-                System.out.println(matcher.group(1));
-            }
+            System.out.println(file.getName());
 
 
-//            File newFileName = new File(baseFileName);
+//            while(matcher.find()){
+//                System.out.println(matcher.group(1));
+//
+//                File newFileName = new File(directory+"\\newbbFile"+matcher.group(1)+extensions[0]);
+//                if(file.renameTo(newFileName)){
+//                    System.out.println("success");
+//                } else {
+//                    System.out.println("fail");
+//                }
+//
+//            }
+
+
 //            System.out.println(file.getName());
         }
     }
