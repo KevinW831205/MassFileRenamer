@@ -16,7 +16,7 @@ public class MassFileRenamer {
         this.extensions = extensions;
     }
 
-    public void renameFiles(){
+    public void renameFiles(String newFileName){
         File[] files = filesInDir();
 
         System.out.println(files.length);
@@ -31,8 +31,8 @@ public class MassFileRenamer {
                 System.out.println(matcher.group(1));
                 System.out.println(matcher.group(2));
 
-                File newFileName = new File(directory+"\\newFile"+matcher.group(1)+extensions[0]);
-                if(file.renameTo(newFileName)){
+                File newFile = new File(directory+"\\"+newFileName +matcher.group(1)+extensions[0]);
+                if(file.renameTo(newFile)){
                     System.out.println("success");
                 } else {
                     System.out.println("fail");
