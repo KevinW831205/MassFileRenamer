@@ -20,25 +20,25 @@ public class MassFileRenamer {
         File[] files = filesInDir();
 
         System.out.println(files.length);
-        String regex = "^"+baseFileName+"(\\d)";
+        String regex = "^"+baseFileName+"(.*)(\\..*)$";
         Pattern pattern = Pattern.compile(regex);
 
         for(File file : files){
             Matcher matcher = pattern.matcher(file.getName());
-            System.out.println(file.getName());
 
 
-//            while(matcher.find()){
-//                System.out.println(matcher.group(1));
-//
+            while(matcher.find()){
+                System.out.println(matcher.group(1));
+                System.out.println(matcher.group(2));
+
 //                File newFileName = new File(directory+"\\newbbFile"+matcher.group(1)+extensions[0]);
 //                if(file.renameTo(newFileName)){
 //                    System.out.println("success");
 //                } else {
 //                    System.out.println("fail");
 //                }
-//
-//            }
+
+            }
 
 
 //            System.out.println(file.getName());
