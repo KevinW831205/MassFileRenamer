@@ -10,6 +10,9 @@ public class Main {
         String newFileName = "newHtml";
 
 
+
+
+
         MassFileRenamer renamer = new MassFileRenamer(directory, baseFileName, extensions);
 
         renamer.renameFiles(newFileName);

@@ -26,23 +26,23 @@ public class MassFileRenamer {
 
         for (File file : files) {
             Matcher matcher = pattern.matcher(file.getName());
-            System.out.println(file.getName());
+//            System.out.println(file.getName());
 
             while (matcher.find()) {
                 System.out.println(matcher.group(1));
                 System.out.println(matcher.group(2));
 
                 String fileExtension = matcher.group(2);
-                for (String extension : extensions) {
-                    if (fileExtension.equals(extension)) {
-                        File newFile = new File(directory + "\\" + newFileName + matcher.group(1) + extension);
-                        if (file.renameTo(newFile)) {
-                            System.out.println("success");
-                        } else {
-                            System.out.println("fail");
-                        }
-                    }
-                }
+//                for (String extension : extensions) {
+//                    if (fileExtension.equals(extension)) {
+//                        File newFile = new File(directory + "\\" + newFileName + matcher.group(1) + extension);
+//                        if (file.renameTo(newFile)) {
+//                            System.out.println("success");
+//                        } else {
+//                            System.out.println("fail");
+//                        }
+//                    }
+//                }
             }
 
 
