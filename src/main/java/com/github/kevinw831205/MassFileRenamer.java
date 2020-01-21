@@ -10,35 +10,39 @@ public class MassFileRenamer {
     private String baseFileName;
     private String[] extensions;
 
-    public MassFileRenamer(String directory, String baseFileName, String... extensions ) {
+    public MassFileRenamer(String directory, String baseFileName, String... extensions) {
         this.directory = directory;
         this.baseFileName = baseFileName;
         this.extensions = extensions;
     }
 
-    public void renameFiles(String newFileName){
+    public void renameFiles(String newFileName) {
         File[] files = filesInDir();
 
         System.out.println(files.length);
-        String regex = "^"+baseFileName+"(.*)(\\..*)$";
+        String regex = "^" + baseFileName + "(.*)(\\..*)$";
         System.out.println(regex);
         Pattern pattern = Pattern.compile(regex);
 
-        for(File file : files){
+        for (File file : files) {
             Matcher matcher = pattern.matcher(file.getName());
             System.out.println(file.getName());
 
-            while(matcher.find()){
+            while (matcher.find()) {
                 System.out.println(matcher.group(1));
                 System.out.println(matcher.group(2));
 
-                File newFile = new File(directory+"\\"+newFileName +matcher.group(1)+extensions[0]);
-                if(file.renameTo(newFile)){
-                    System.out.println("success");
-                } else {
-                    System.out.println("fail");
+                String fileExtension = matcher.group(2);
+                for (String extension : extensions) {
+                    if (fileExtension.equals(extension)) {
+                        File newFile = new File(directory + "\\" + newFileName + matcher.group(1) + extension);
+                        if (file.renameTo(newFile)) {
+                            System.out.println("success");
+                        } else {
+                            System.out.println("fail");
+                        }
+                    }
                 }
-
             }
 
 
@@ -46,12 +50,12 @@ public class MassFileRenamer {
         }
     }
 
-    public File[] filesInDir(){
+    public File[] filesInDir() {
         File dir = DirectoryToFile();
         return dir.listFiles();
     }
 
-    public File DirectoryToFile(){
+    public File DirectoryToFile() {
         File file = new File(getDirectory());
         return file;
     }
