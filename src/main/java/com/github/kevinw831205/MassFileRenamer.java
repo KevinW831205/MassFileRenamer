@@ -21,11 +21,12 @@ public class MassFileRenamer {
 
         System.out.println(files.length);
         String regex = "^"+baseFileName+"(.*)(\\..*)$";
+        System.out.println(regex);
         Pattern pattern = Pattern.compile(regex);
 
         for(File file : files){
             Matcher matcher = pattern.matcher(file.getName());
-
+            System.out.println(file.getName());
 
             while(matcher.find()){
                 System.out.println(matcher.group(1));
