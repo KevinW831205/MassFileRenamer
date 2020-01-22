@@ -20,7 +20,7 @@ public class MassFileRenamer {
         File[] files = filesInDir();
 
         System.out.println(files.length);
-        String regex = "^" + baseFileName + "([0-9]+)(.*)";
+        String regex = "^" + baseFileName + "([0-9]+)(.*)(\\..*)$";
         //"(\\[.*?\\])(.*s)
         System.out.println(regex);
         Pattern pattern = Pattern.compile(regex);
@@ -32,8 +32,11 @@ public class MassFileRenamer {
             while (matcher.find()) {
                 System.out.println(matcher.group(1));
                 System.out.println(matcher.group(2));
+                System.out.println(matcher.group(3));
 
-                String fileExtension = matcher.group(2);
+                String fileExtension = matcher.group(3);
+                String newFileNameString = directory+"\\"+newFileName+"["+matcher.group(1)+"]"+matcher.group(2)+matcher.group(3);
+                System.out.println(newFileNameString);
 //                for (String extension : extensions) {
 //                    if (fileExtension.equals(extension)) {
 //                        File newFile = new File(directory + "\\" + newFileName + matcher.group(1) + extension);
